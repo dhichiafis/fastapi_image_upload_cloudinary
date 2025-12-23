@@ -44,7 +44,7 @@ async def create_product(
     #the url that retrieves the image
     srcURL = upload_result['secure_url']
     #we store the url in the database
-    print("****1. Set up and configure the SDK:****\nCredentials: ", config.cloud_name, config.api_key, "\n")
+    #print("****1. Set up and configure the SDK:****\nCredentials: ", config.cloud_name, config.api_key, "\n")
     new_product=Product(
         title=title,
         image_url=srcURL,
