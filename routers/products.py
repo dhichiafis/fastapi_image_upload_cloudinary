@@ -5,6 +5,7 @@ from schemas import *
 from database import connect
 from sqlalchemy.orm import Session 
 load_dotenv()
+import os 
 
 import cloudinary
 from cloudinary import CloudinaryImage
@@ -12,7 +13,15 @@ import cloudinary.uploader
 import cloudinary.api
 
 import json
-config = cloudinary.config(secure=True)
+#config = cloudinary.config(secure=True)
+
+
+cloudinary.config(
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET"),
+    secure=True
+)
 
 
 products_api=APIRouter(tags=['products'],prefix='/products')
