@@ -1,0 +1,18 @@
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base,sessionmaker
+
+Base=declarative_base()
+
+url='sqlite:///firstiero.db'
+engine=create_engine(url)
+
+
+SessionFactory=sessionmaker(bind=engine,autoflush=False,autocommit=False)
+
+
+def connect():
+    db=SessionFactory()
+    try:
+        yield db 
+    finally:
+        db.close()
